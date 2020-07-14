@@ -11,7 +11,7 @@ let finalTeamArray = [];
 function startingPrompt() {
     inquirer.prompt([
         {
-            message: "/////////Welcome to Team Generator 5000! Please write your team name://///////",
+            message: "******** Welcome to Team Profile Generator! Please enter your team name: ********",
             name: "teamname"
         }
     ])
@@ -42,9 +42,9 @@ function addManager() {
         },
     ])
 
-        .then(function (data) {
+        .then(data => {
             const name = data.name;
-            const id = 1;
+            const id = finalTeamArray.length;
             const email = data.email;
             const officeNumber = data.officeNumber;
             const teamMember = new Manager(name, id, email, officeNumber);
@@ -99,7 +99,7 @@ function addEngineer() {
 
         .then(data => {
             const name = data.name;
-            const id = finalTeamArray.length + 1;
+            const id = finalTeamArray.length;
             const email = data.email;
             const github = data.github;
             const teamMember = new Engineer(name, id, email, github);
@@ -125,22 +125,22 @@ function addIntern() {
         }
     ])
 
-        .then(function (data) {
-            const name = data.name
-            const id = finalTeamArray.length + 1
-            const email = data.email
-            const school = data.school
-            const teamMember = new Intern(name, id, email, school)
-            finalTeamArray.push(teamMember)
+        .then(data => {
+            const name = data.name;
+            const id = finalTeamArray.length;
+            const email = data.email;
+            const school = data.school;
+            const teamMember = new Intern(name, id, email, school);
+            finalTeamArray.push(teamMember);
             addTeamMembers()
         });
 
 };
 
 function compileTeam() {
-    console.log("//////////You've done it!!! Now give your team a raise.////////")
+    console.log("Wonderful! You have now successfully created your team's profile");
 
-    const htmlArray = []
+    const htmlArray = [];
     const htmlBeginning = `
     <!DOCTYPE html>
         <html lang="en">
@@ -171,13 +171,13 @@ function compileTeam() {
                 <h2>${finalTeamArray[i].title}</h2>
             </div>
             <div class="card-bottom">
-                <p>Employee ID: ${finalTeamArray[i].id}</p>
-                <p>Email: <a href="mailto:${finalTeamArray[i].email}">${finalTeamArray[i].email}</a>></p>
+                <p>ID: ${finalTeamArray[i].id}</p>
+                <p>Email: <a href="mailto:${finalTeamArray[i].email}">${finalTeamArray[i].email}</a></p>
         `;
 
         if (finalTeamArray[i].officeNumber) {
             object += `
-            <p>${finalTeamArray[i].officeNumber}</p>
+            <p>Office Number: ${finalTeamArray[i].officeNumber}</p>
             `
         }
 
@@ -209,7 +209,7 @@ function compileTeam() {
 
     htmlArray.push(htmlEnd);
 
-    fs.writeFile(`./dist/${finalTeamArray[0]}.html`, htmlArray.join(""), function (err) {
+    fs.writeFile(`./dist/${finalTeamArray[0].toLowerCase().split(' ').join('-')}.html`, htmlArray.join(""), function (err) {
 
     })
 }

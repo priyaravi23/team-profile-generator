@@ -9,7 +9,7 @@ body {
     align-items: center;
 }
 .banner-bar {
-    background-color: rgba(53, 124, 109, 0.842);
+    background-color: rgba(217, 117, 104, 0.842);
     width: 100%;
     color: #ffffff;
     display: flex;
@@ -49,8 +49,8 @@ h2 {
     width: 60vw;
 }
 .card-top {
-    background-color: rgb(228, 174, 76);
-    border: 2px solid rgb(228, 174, 76);
+    background-color: rgb(98, 165, 189);
+    border: 2px solid rgb(98, 165, 189);
     width: 246px;
     border-top-left-radius: 10px;
 }
