@@ -27,12 +27,28 @@ function startingPrompt() {
 function addManager() {
     inquirer.prompt([
         {
-            message: "What is your team manager's name?",
-            name: "name"
+            message: "What is your team manager's name? (Required)",
+            name: "name",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    return "Please enter your manager's name";
+                }
+            }
         },
         {
             message: "What is your team manager's email address?",
-            name: "email"
+            name: "email",
+            validate: email => {
+                const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a valid email address";
+                }
+            }
         },
 
         {
@@ -84,12 +100,28 @@ function addTeamMembers() {
 function addEngineer() {
     inquirer.prompt([
         {
-            message: "What is this engineer's name?",
-            name: "name"
+            message: "What is this engineer's name? (Required)",
+            name: "name",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    return "Please enter the engineer's name";
+                }
+            }
         },
         {
             message: "What is this engineer's email address?",
-            name: "email"
+            name: "email",
+            validate: email => {
+                const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a valid email address";
+                }
+            }
         },
         {
             message: "What is this engineer's Github profile?",
@@ -112,12 +144,28 @@ function addEngineer() {
 function addIntern() {
     inquirer.prompt([
         {
-            message: "What is this intern's name?",
-            name: "name"
+            message: "What is this intern's name? (Required)",
+            name: "name",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    return "Please enter the intern's name";
+                }
+            }
         },
         {
             message: "What is this intern's email address?",
-            name: "email"
+            name: "email",
+            validate: email => {
+                const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a valid email address";
+                }
+            }
         },
         {
             message: "What is this intern's school?",
