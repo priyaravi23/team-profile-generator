@@ -1,7 +1,15 @@
 ## Team Profile Generator
 
 *A Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person*
-  
+ 
+### App Demo
+
+![](images/profile-generator.gif)
+
+### Link to mp4
+
+[mp4](images/team-profile-generator.mp4)
+
 ### User Story
   
   ```text
@@ -35,5 +43,3 @@ THEN I exit the application, and the HTML is generated
 ### Mock-Up
 
 ![](images/mock-up.png)
-
-### App Demo
