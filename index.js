@@ -7,7 +7,6 @@ const Intern = require("./lib/intern");
 
 let finalTeamArray = [];
 
-
 function startingPrompt() {
     inquirer.prompt([
         {
@@ -20,8 +19,6 @@ function startingPrompt() {
             finalTeamArray.push(teamName);
             addManager();
         })
-
-
 }
 
 function addManager() {
@@ -67,7 +64,6 @@ function addManager() {
             finalTeamArray.push(teamMember);
             addTeamMembers();
         });
-
 }
 
 function addTeamMembers() {
@@ -138,8 +134,7 @@ function addEngineer() {
             finalTeamArray.push(teamMember);
             addTeamMembers();
         });
-
-};
+}
 
 function addIntern() {
     inquirer.prompt([
@@ -182,8 +177,17 @@ function addIntern() {
             finalTeamArray.push(teamMember);
             addTeamMembers()
         });
+}
 
-};
+function generateHtml(finalTeamArray) {
+    return `./dist/${finalTeamArray[0].toLowerCase().split(' ').join('-')}.html`
+}
+
+function generateTitle(finalTeamArray) {
+    return finalTeamArray[0].replace(/\w\S*/g, txt => {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
 
 function compileTeam() {
     console.log("Wonderful! You have now successfully created your team's profile");
@@ -196,7 +200,7 @@ function compileTeam() {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>${finalTeamArray[0]}</title>
+            <title>${generateTitle(finalTeamArray)}</title>
             <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
             <style>
              ${style}
@@ -231,7 +235,7 @@ function compileTeam() {
 
         if (finalTeamArray[i].github) {
             object += `
-            <p>GitHub: <a href="https://github.com/${finalTeamArray[i].github}">${finalTeamArray[i].github}</a></p>
+            <p>GitHub: <a href="https://github.com/${finalTeamArray[i].github}" target="_blank">${finalTeamArray[i].github}</a></p>
             `
         }
 
@@ -257,8 +261,10 @@ function compileTeam() {
 
     htmlArray.push(htmlEnd);
 
-    fs.writeFile(`./dist/${finalTeamArray[0].toLowerCase().split(' ').join('-')}.html`, htmlArray.join(""), function (err) {
-
+    fs.writeFile(generateHtml(finalTeamArray), htmlArray.join(""), function (err) {
+        if (err) {
+            throw err;
+        }
     })
 }
 
