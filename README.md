@@ -8,7 +8,7 @@
 
 ### Link to mp4
 
-[mp4](images/team-profile-generator.mp4)
+[The complete demo](images/team-profile-generator.mp4)
 
 ### User Story
   

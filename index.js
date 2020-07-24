@@ -35,7 +35,20 @@ function addManager() {
             }
         },
         {
-            message: "What is your team manager's email address?",
+            message: "What is your team manager's employee id?",
+            name: "id",
+            validate: empId => {
+                const valid = /^[0-9]+$/.test(empId);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a number";
+                }
+            }
+        },
+        {
+            message: "What is your team manager's email address? (Required)",
             name: "email",
             validate: email => {
                 const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -57,7 +70,8 @@ function addManager() {
 
         .then(data => {
             const name = data.name;
-            const id = finalTeamArray.length;
+            // const id = finalTeamArray.length;
+            const id = data.id;
             const email = data.email;
             const officeNumber = data.officeNumber;
             const teamMember = new Manager(name, id, email, officeNumber);
@@ -107,7 +121,20 @@ function addEngineer() {
             }
         },
         {
-            message: "What is this engineer's email address?",
+            message: "What is your engineer's employee id?",
+            name: "id",
+            validate: empId => {
+                const valid = /^[0-9]+$/.test(empId);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a number";
+                }
+            }
+        },
+        {
+            message: "What is this engineer's email address? (Required)",
             name: "email",
             validate: email => {
                 const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -127,7 +154,8 @@ function addEngineer() {
 
         .then(data => {
             const name = data.name;
-            const id = finalTeamArray.length;
+            // const id = finalTeamArray.length;
+            const id = data.id;
             const email = data.email;
             const github = data.github;
             const teamMember = new Engineer(name, id, email, github);
@@ -150,7 +178,20 @@ function addIntern() {
             }
         },
         {
-            message: "What is this intern's email address?",
+            message: "What is your intern's employee id?",
+            name: "id",
+            validate: empId => {
+                const valid = /^[0-9]+$/.test(empId);
+
+                if (valid) {
+                    return true;
+                } else {
+                    return "Please enter a number";
+                }
+            }
+        },
+        {
+            message: "What is this intern's email address? (Required)",
             name: "email",
             validate: email => {
                 const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
@@ -170,7 +211,8 @@ function addIntern() {
 
         .then(data => {
             const name = data.name;
-            const id = finalTeamArray.length;
+            // const id = finalTeamArray.length;
+            const id = data.id;
             const email = data.email;
             const school = data.school;
             const teamMember = new Intern(name, id, email, school);
